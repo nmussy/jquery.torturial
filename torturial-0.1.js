@@ -93,7 +93,6 @@
 			transitions.openCurrentView.apply(this);
 		},
 		openCurrentStep: function () {
-			alert(this.currentView +  ' : ' + this.currentStep);
 			if(this.currentStep == this.views[this.currentView].steps.length) {
 				if(this.currentView == this.views.length) {
 					// END OF SLIDESHOW
