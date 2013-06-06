@@ -1,0 +1,27 @@
+{
+	"name": "torturial",
+	"version": "0.0.1",
+	"title": "Torturial",
+	"author": {
+		"name": "Jimmy Gaussen",
+			"email": "jimmy.gaussen@gmail.com",
+			"url": "https://github.com/nmussy"
+	},
+	"licenses": [
+		{
+			"type": "Apache License 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.9"
+	},
+	"description": "An advanced jQuery tutorial plugin. Teach your users to use your web page.",
+	"keywords": [
+		"tutorial",
+		"torturial",
+		"teach",
+		"learn"
+	],
+	"docs": "https://github.com/nmussy/jquery.torturial/blob/master/README.md"
+}
