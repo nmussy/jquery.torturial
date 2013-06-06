@@ -1,0 +1,209 @@
+#torturial-background {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: black;
+	filter: alpha(opacity=50); /* internet explorer */
+	-khtml-opacity: 0.50; /* khtml, old safari */
+	-moz-opacity: 0.50; /* mozilla, netscape */
+	opacity: 0.50; /* fx, safari, opera */
+}
+
+#torturial-close {
+	padding: 0;
+	border:0;
+	cursor: pointer;
+	background: transparent;
+	-webkit-appearance: none;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 20px;
+	filter: alpha(opacity=60);
+	position: fixed;
+	top: 15px;
+	right: 15px;
+    border-radius: 12px;
+    width: 20px;
+    background-color: white;
+    opacity: 0.6;
+}
+
+#torturial-close:hover,
+#torturial-close:focus {
+  text-decoration: none;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+
+.torturial, .torturial * {
+	position: absolute;
+}
+
+#torturial-selector {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding-bottom: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+#torturial-selector > * {
+	position: relative;
+	margin-right: 15px;
+}
+
+.selector-element {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: #111;
+    cursor: pointer;
+    opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+.selector-element:hover,
+.selector-element:focus {
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+}
+
+.selected-element {
+    background-color: white;
+    cursor: default;
+}
+
+#torturial-left-arrow,
+#torturial-right-arrow {
+	position: fixed;
+  	top: 50%;
+	border: 0;
+	padding: 0;
+	margin-top: -60px;
+	margin-bottom: 0;
+	margin-right: 0;
+	margin-left: 0;
+	box-sizing: border-box;
+	color: black;
+	cursor: pointer;
+	display: block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 60px;
+	height: 100%;
+	letter-spacing: normal;
+	line-height: normal;
+	max-width: 150px;
+	min-width: 90px;
+	outline-width: 0px;
+	text-indent: 0px;
+	text-shadow: none;
+	text-transform: none;
+	width: 150px;
+	word-spacing: 0px;
+}
+
+#torturial-left-arrow:hover,
+#torturial-right-arrow:hover,
+#torturial-left-arrow:focus,
+#torturial-right-arrow:focus {
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+}
+
+#torturial-left-arrow {
+	left: 0;
+	padding-left: 45px;
+}
+
+#torturial-right-arrow {
+ 	right: 0;
+	padding-right: 45px;
+	text-align: right;
+}
+
+#torturial-title {
+	position: fixed;
+	top: 15px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+#torturial-title > h2 {
+	position: relative;
+	width: auto;
+	color: black;
+}
+
+.torturial-popover {
+	position: absolute;
+	border-width: 3px;
+	border-style: solid;
+	border-color: #333333;
+	border-radius: 15px;
+	background-color: #555555;
+	color: white;
+	padding: 10px;
+}
+
+.torturial-popover-text {
+	text-align: center;
+	word-wrap:break-word;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.torturial-popover-text > * {
+	text-align: center;
+	word-wrap:break-word;
+	position: relative;
+	height: auto;
+	margin: 0;
+	width: 100%;
+	vertical-align: middle;
+}
+
+div[class*=".torturial-popover-arrow"] {
+	display: inline-block;
+	position: absolute;
+	width: 0;
+	height: 0; 
+}
+
+.torturial-popover-arrow-top,
+.torturial-popover-arrow-bottom {
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+}
+.torturial-popover-arrow-right,
+.torturial-popover-arrow-left {
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+
+.torturial-popover-arrow-bottom {
+	top: -15px;
+	border-bottom: 15px solid #333333;
+}
+
+.torturial-popover-arrow-left {
+	right: -15px;
+	border-left: 15px solid #333333;
+}
+
+.torturial-popover-arrow-top {	
+	bottom: -15px;
+	border-top: 15px solid #333333;
+}
+
+.torturial-popover-arrow-right {
+	left: -15px;
+	border-right: 15px solid #333333;
+}
