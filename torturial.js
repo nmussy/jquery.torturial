@@ -122,9 +122,7 @@
 						attach.css('z-index', function(index, value) {
 							$(this).attr('data-z-index', value);
 							return 9999;
-						});
-
-						attach.css('position', function(index, value) {
+						}).css('position', function(index, value) {
 							$(this).attr('data-position', value);
 							return 'relative';
 						});
@@ -175,7 +173,7 @@
 									left: (left > $(document).width() ? $(document).width() - popover.outerWidth() : left)
 								});
 								top = (attach.offset().top - popover.offset().top - 3 > 0 ? attach.offset().top - popover.offset().top - 3 : -3);
-								popover.children('.torturial-popover-arrow-right').css('top', top);
+								popover.children('.torturial-popover-arrow-right').css({top: top});
 						}
 					} else if (typeof element.position !== 'undefined' && element.position.length == 2) {
 						popover.css({
@@ -194,8 +192,7 @@
 				this.views[this.currentView].steps[this.currentStep].foreground.css('z-index', function(index, value) {
 					$(this).attr('data-z-index', value);
 					return 9999;
-				});
-				this.views[this.currentView].steps[this.currentStep].foreground.css('position', function(index, value) {
+				}).css('position', function(index, value) {
 					$(this).attr('data-position', value);
 					return 'relative';
 				});
@@ -203,7 +200,8 @@
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].delay !== 'undefined'
 				&& this.views[this.currentView].steps[this.currentStep].delay.length > 0) {
-				setTimeout(function () {
+				this.views[this.currentView].steps[this.currentStep].delayid = setTimeout(function () {
+					delete this.views[this.currentView].steps[this.currentStep].delayid;
 					$(this).children('.torturial-popover').remove();
 					++this.currentStep;
 					transitions.openNextStep.apply(this);
@@ -212,7 +210,7 @@
 			if (typeof this.views[this.currentView].steps[this.currentStep].changeOn !== 'undefined'
 				&& this.views[this.currentView].steps[this.currentStep].changeOn.length > 1) {
 				var changeOn = this.views[this.currentView].steps[this.currentStep].changeOn;
-				
+
 				var data = {};
 				if(typeof changeOn[1] === 'object')
 					var data = changeOn[1];
@@ -229,23 +227,20 @@
 				if(typeof changeOn[changeOn.length - 1] === 'function')
 					data.foobarbaz['userHandler'] = changeOn[changeOn.length - 1];
 
-				data.foobarbaz['handler'] = function(e) {
+				changeOn.handler = function(e) {
 					if('userHandler' in e.data.foobarbaz) {
 						var result = e.data.foobarbaz.userHandler.call(this, e);
 						if(result == false)
 							return;
 					}
-
-					$(document).off(e.data.foobarbaz.eventType, e.data.foobarbaz.handler);
 					transitions.openNextStep.apply(e.data.foobarbaz.element);
 				};
 
-				$(document).on(changeOn[0], selector, data, data.foobarbaz.handler);
+				$(document).on(changeOn[0], selector, data, changeOn.handler);
 			}
 			else { // defaults
 
 			}
-
 		},
 		openNextStep: function () {
 			if(this.currentStep >= this.views[this.currentView].steps.length - 1) {
@@ -285,6 +280,15 @@
 					$(this).removeAttr('data-position');
 					return old;
 				});
+			}
+
+			if(typeof this.views[this.currentView].steps[this.currentStep].changeOn !== 'undefined') {
+				$(document).off(this.views[this.currentView].steps[this.currentStep].changeOn[0],
+					this.views[this.currentView].steps[this.currentStep].changeOn.handler);
+			}
+
+			if(typeof this.views[this.currentView].steps[this.currentStep].delayid !== 'undefined') {
+				clearTimeout(this.views[this.currentView].steps[this.currentStep].delayid);
 			}
 		}
 	},	
@@ -402,6 +406,8 @@
 					$(this).removeAttr('data-height');
 					return old;
 				});
+
+			transitions.cleanStep.apply(this);
 			return $(this);
 		},
 		destroy: function() {
