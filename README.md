@@ -3,7 +3,7 @@ jquery.torturial
 
 An advanced tutorial plugin for jQuery.
 
-Version 0.0.3
+Version 0.0.4
 -------------
 
 Check out the [changelog](CHANGELOG.md).
@@ -20,6 +20,11 @@ Dependency: [jQuery](http://jquery.com/download/) 1.9+ or 2.0+.
 Browser compatibility: Google Chrome 27+, Mozilla Firefox 20+, Internet Explorer 8+.
 
 Please contact me if you have succesfully tested it on a previous version.
+
+Examples
+--------
+
+You could take a look at my plugin before downloading it, I won't take it personally. Here are some [examples](http://nmussy.github.io/jquery.torturial/).
 
 Features
 --------
