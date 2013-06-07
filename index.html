@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jquery.torturial by nmussy</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>jquery.torturial</h1>
+        <p>An advanced jQuery tutorial plugin. Teach your users to use your web page.</p>
+
+        <p class="view"><a href="https://github.com/nmussy/jquery.torturial">View the Project on GitHub <small>nmussy/jquery.torturial</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/nmussy/jquery.torturial/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nmussy/jquery.torturial/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nmussy/jquery.torturial">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="jquerytorturial" class="anchor" href="#jquerytorturial"><span class="octicon octicon-link"></span></a>jquery.torturial</h1>
+
+<p>An advanced tutorial plugin for jQuery.</p>
+
+<h2>
+<a name="version-003" class="anchor" href="#version-003"><span class="octicon octicon-link"></span></a>Version 0.0.3</h2>
+
+<p>Check out the <a href="CHANGELOG.md">changelog</a>.</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>Download both the latest version of <a href="torturial.js">torturial.js</a> and <a href="torturial.css">torturial.css</a>, and load them into your project.</p>
+
+<p>The plugin is known to work with the following versions, but it may be compatible with earlier versions.</p>
+
+<p>Dependency: <a href="http://jquery.com/download/">jQuery</a> 1.9+ or 2.0+.
+Browser compatibility: Google Chrome 27+, Mozilla Firefox 20+, Internet Explorer 8+.</p>
+
+<p>Please contact me if you have succesfully tested it on a previous version.</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Editables views, broke down into steps</li>
+<li>Each step is composed of popovers, and elements of the page can be brought back to the front</li>
+<li>Steps follow each other and are triggered by a delay and/or an <code>on()</code> event</li>
+<li>Eased navigation</li>
+</ul><h2>
+<a name="planned-features" class="anchor" href="#planned-features"><span class="octicon octicon-link"></span></a>Planned features</h2>
+
+<ul>
+<li>Event triggered at key moments of the execution</li>
+<li>When the element to which the popover in attached to in animated, move the popover too</li>
+<li>Option: Making the delay visible to the user, perhaps with a circular progress widget</li>
+<li>Option: Pausing/Resuming the delay for the user</li>
+<li>Option: Giving control to the user on the flow of the steps (previous, next)</li>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<h4>
+<a name="initialization" class="anchor" href="#initialization"><span class="octicon octicon-link"></span></a>Initialization</h4>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'&lt;div id="torturial"&gt;&lt;/div&gt;'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">torturial</span><span class="p">({</span>
+<span class="p">[</span> <span class="c1">// views</span>
+    <span class="p">{</span>
+       <span class="nx">title</span><span class="o">:</span> <span class="s1">'Usage'</span><span class="p">,</span>
+       <span class="nx">steps</span><span class="o">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+             <span class="nx">popovers</span><span class="o">:</span> <span class="p">[</span>
+                 <span class="p">{</span>
+                     <span class="nx">id</span><span class="o">:</span> <span class="s1">'popover-textarea'</span><span class="p">,</span>
+                     <span class="nx">text</span><span class="o">:</span> <span class="s1">'Here\'s a text area'</span><span class="p">,</span>
+                     <span class="nx">attachTo</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#foo'</span><span class="p">),</span>
+                     <span class="nx">attachPos</span><span class="o">:</span> <span class="s1">'left'</span>
+                 <span class="p">}</span>
+             <span class="p">],</span>
+             <span class="nx">changeOn</span><span class="o">:</span> <span class="p">[</span><span class="s1">'keypress'</span><span class="p">,</span> <span class="s1">'input'</span><span class="p">,</span> <span class="p">{</span><span class="nx">foo</span><span class="o">:</span> <span class="s1">'bar'</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">!=</span> <span class="mi">23</span><span class="p">)</span>
+                      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                 <span class="p">}],</span>
+             <span class="nx">delay</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+             <span class="nx">foreground</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'li'</span><span class="p">)</span>
+           <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nx">title</span><span class="o">:</span> <span class="s1">'Another view'</span><span class="p">,</span>
+        <span class="nx">steps</span><span class="o">:</span> <span class="p">[</span>
+           <span class="p">{</span>
+              <span class="nx">popovers</span><span class="o">:</span> <span class="p">[</span>
+                 <span class="p">{</span>
+                    <span class="nx">text</span><span class="o">:</span> <span class="s1">'Another popover'</span><span class="p">,</span>
+                    <span class="nx">attachTo</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#torturial-title'</span><span class="p">),</span>
+                    <span class="nx">attachPos</span><span class="o">:</span> <span class="s1">'bottom'</span>
+                 <span class="p">}</span>
+              <span class="p">],</span>
+              <span class="nx">delay</span><span class="o">:</span> <span class="mi">300</span>
+           <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="p">{</span>
+   <span class="nx">startingView</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="nx">startingStep</span><span class="o">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="p">]);</span>
+</pre></div>
+
+<h4>
+<a name="visibility" class="anchor" href="#visibility"><span class="octicon octicon-link"></span></a>Visibility</h4>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#torturial'</span><span class="p">).</span><span class="nx">torturial</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#torturial'</span><span class="p">).</span><span class="nx">torturial</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="destruction" class="anchor" href="#destruction"><span class="octicon octicon-link"></span></a>Destruction</h4>
+
+<p>It first triggers a <code>.torturial('hide')</code>, no need to do it twice.</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'#torturial'</span><span class="p">).</span><span class="nx">torturial</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="view" class="anchor" href="#view"><span class="octicon octicon-link"></span></a>View</h3>
+
+<p>The tutorial will be composed of views, that the user will be able to navigate through using his mouse or keyboard. 
+Each view acts as a placeholder for different steps.</p>
+
+<ul>
+<li>
+<code>steps</code> – The array containing the steps of the view.</li>
+<li>
+<code>title</code> – The view's title, selectable with <code>#turtorial-title</code>.</li>
+</ul><h3>
+<a name="step" class="anchor" href="#step"><span class="octicon octicon-link"></span></a>Step</h3>
+
+<p>The step is the actual tutoring unit of the plugin.
+They give out the information, and show the important elements of the web page.</p>
+
+<ul>
+<li>
+<code>popovers</code> – The array containing the popovers of the step, to be deleted when it is changed.</li>
+<li>
+<code>changeOn</code> – The array containing the options of the <code>on()</code> function of jQuery, please refer to the <a href="http://api.jquery.com/on/">API documentation</a>.
+The step changing function will be called after the execution of the event handler. You can return <code>false</code> in order to prevent the next step to be loaded and keep your listener alive.</li>
+<li>
+<code>delay</code> – Value in milliseconds. <strong>IMPORTANT</strong>: A delay with the value <code>0</code> will result in an imediate change in the step, much like Javascript's <a href="http://www.w3schools.com/jsref/met_win_settimeout.asp">setTimeout</a> and jQuery's <a href="http://api.jquery.com/delay/">.delay</a>.</li>
+<li>
+<code>foreground</code> – jQuery element or elements to be brought to the forground. Note that all their descendants will be advanced too.</li>
+</ul><h3>
+<a name="popover" class="anchor" href="#popover"><span class="octicon octicon-link"></span></a>Popover</h3>
+
+<p>Text-containing bubbles that give out indication to the user.</p>
+
+<ul>
+<li>
+<code>text</code> – The string that the popover will contain.</li>
+<li>
+<code>id</code> – The string for the id attribute of the popover container.</li>
+<li>
+<code>attachTo</code> – jQuery element to which to popover will be attached to. It and its descendants will autoamatically be brought to the foreground.</li>
+<li>
+<code>attachPos</code> – The position of the popover relative to its attachment : <code>left</code>, <code>top</code>, <code>right</code> or <code>bottom</code>.</li>
+<li>
+<code>position</code> – Array of offset <code>top</code> and <code>left</code> positionning the popover absolutely.</li>
+</ul><h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<ul>
+<li>
+<code>startingView</code> – The index of the view that will be displayed at the creation of the torturial. <code>Default: 0</code>
+</li>
+<li>
+<code>startingStep</code> – The index of the step within the <code>startingView</code> to be first displayed at the creation of the torturial. <code>Default: 0</code>
+</li>
+</ul><h3>
+<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard shortcuts</h3>
+
+<ul>
+<li>
+<code>Right arrow</code> : Next view (if any)</li>
+<li>
+<code>Left arrow</code> : Previous view (if any)</li>
+<li>
+<code>ESC</code> : Destroy the torturial</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/nmussy">nmussy</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41570175-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
