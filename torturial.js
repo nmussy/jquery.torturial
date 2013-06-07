@@ -130,43 +130,52 @@
 						});
 
 						popover.css({position: 'absolute'});
-
+						
+						var top, left;
 						switch(element.attachPos) {
 							case 'top':
 								$('<div class="torturial-popover-arrow-top"></div>').prependTo(popover);
+								top = attach.offset().top - popover.outerHeight(true) - 15;
+								left = attach.offset().left - popover.outerWidth() / 2 + attach.outerWidth() / 2;
 								popover.css({
-									top: attach.offset().top - popover.outerHeight(true) - 15,
-									left: attach.offset().left - popover.outerWidth() / 2 + attach.outerWidth() / 2									
+									top: (top < 0 ? 15 : top),
+									left: (left < 0 ? 15 : (left > $(document).width() ? $(document).width() - popover.outerWidth() : left))
 								});
-								popover.children('.torturial-popover-arrow-top').css(
-									'left', attach.offset().left - popover.offset().left + 5);
+								left = (attach.offset().left - popover.offset().left > 0 ? attach.offset().left - popover.offset().left : 0);
+								popover.children('.torturial-popover-arrow-top').css({left: left});
 								break;
 							case 'bottom':
 								$('<div class="torturial-popover-arrow-bottom"></div>').prependTo(popover);
+								top = attach.offset().top + attach.outerHeight() + 15;
+								left = attach.offset().left - popover.outerWidth() / 2 + attach.outerWidth() / 2;
 								popover.css({
-									top: attach.offset().top + attach.outerHeight() + 15,
-									left: attach.offset().left - popover.outerWidth() / 2 + attach.outerWidth() / 2
+									top: (top > $(document).height() ? $(document).height() - popover.outerHeight() : top),
+									left: (left < 0 ? 15 : (left > $(document).width() ? $(document).width() - popover.outerWidth() : left))
 								});
-								popover.children('.torturial-popover-arrow-bottom').css(
-									'right', attach.offset().right - popover.offset().right - 5);
+								var right = (attach.offset().right - popover.offset().right > 0 ? attach.offset().right - popover.offset().right : 0);
+								popover.children('.torturial-popover-arrow-bottom').css({right: right});
 								break;
 							case 'left':
 								$('<div class="torturial-popover-arrow-left"></div>').prependTo(popover);
+								top = attach.offset().top + attach.outerHeight() / 2 - popover.outerHeight() / 2;
+								left = attach.offset().left - popover.outerWidth(true) - 15;
 								popover.css({
-									top: attach.offset().top + attach.outerHeight() / 2 - popover.outerHeight() / 2,
-									left: attach.offset().left - popover.outerWidth(true) - 15
+									top: (top < 0 ? 15 : (top > $(document).height() ? $(document).height() - popover.outerHeight() : top)),
+									left: (left < 0 ? 15 : left)
 								});
-								popover.children('.torturial-popover-arrow-left').css(
-									'bottom', attach.offset().bottom - popover.offset().bottom + 5);
+								var bottom = (attach.offset().bottom - popover.offset().bottom > 0 ? attach.offset().bottom - popover.offset().bottom : 0);
+								popover.children('.torturial-popover-arrow-left').css({bottom: bottom});
 								break;
 							default:
 								$('<div class="torturial-popover-arrow-right"></div>').prependTo(popover);
+								top = attach.offset().top +  attach.outerHeight() / 2 - popover.outerHeight() / 2;
+								left = attach.offset().left	+  attach.outerWidth() + 15;
 								popover.css({
-									top:  attach.offset().top +  attach.outerHeight() / 2 - popover.outerHeight() / 2,
-									left:  attach.offset().left	+  attach.outerWidth() + 15
+									top: (top < 0 ? 15 : (top > $(document).height() ? $(document).height() - popover.outerHeight() : top)),
+									left: (left > $(document).width() ? $(document).width() - popover.outerWidth() : left)
 								});
-								popover.children('.torturial-popover-arrow-right').css(
-									'top', attach.offset().top - popover.offset().top - 5);
+								top = (attach.offset().top - popover.offset().top - 3 > 0 ? attach.offset().top - popover.offset().top - 3 : -3);
+								popover.children('.torturial-popover-arrow-right').css('top', top);
 						}
 					} else if (typeof element.position !== 'undefined' && element.position.length == 2) {
 						popover.css({

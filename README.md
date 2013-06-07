@@ -3,10 +3,16 @@ jquery.torturial
 
 An advanced tutorial plugin for jQuery.
 
+Version 0.0.2
+-------------
+
+Check out the [changelog](CHANGELOG.md).
+
+
 Getting started
 ---------------
 
-Download both the latest version of [torturial.js](torturial-0.1.js) and [torturial.css](torturial.css), and load them into your project.
+Download both the latest version of [torturial.js](torturial.js) and [torturial.css](torturial.css), and load them into your project.
 
 The plugin is known to work with the following versions, but it may be compatible with earlier versions.
 Please contact me if you have succesfully tested it on a previous version.

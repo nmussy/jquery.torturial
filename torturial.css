@@ -149,6 +149,8 @@
 	background-color: #555555;
 	color: white;
 	padding: 10px;
+	min-height: 16px;
+	min-width: 16px;
 }
 
 .torturial-popover-text {
@@ -191,16 +193,19 @@ div[class*=".torturial-popover-arrow"] {
 .torturial-popover-arrow-bottom {
 	top: -15px;
 	border-bottom: 15px solid #333333;
+	margin-right: 3px;
 }
 
 .torturial-popover-arrow-left {
 	right: -15px;
 	border-left: 15px solid #333333;
+	margin-bottom: 3px;
 }
 
 .torturial-popover-arrow-top {	
 	bottom: -15px;
 	border-top: 15px solid #333333;
+	margin-left: 3px;
 }
 
 .torturial-popover-arrow-right {
