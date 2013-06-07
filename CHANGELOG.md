@@ -3,6 +3,10 @@ Changelog
 
 ---
 
+### 0.0.4    June 7, 2013
+
+* `delay` fix
+
 ### 0.0.3    June 7, 2013
 
 * The `changeOn` handler is now removed on whether or not it was successfully executed, notably on `destroy` or when another step is loaded

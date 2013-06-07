@@ -15,10 +15,11 @@ Getting started
 Download both the latest version of [torturial.js](torturial.js) and [torturial.css](torturial.css), and load them into your project.
 
 The plugin is known to work with the following versions, but it may be compatible with earlier versions.
-Please contact me if you have succesfully tested it on a previous version.
 
 Dependency: [jQuery](http://jquery.com/download/) 1.9+ or 2.0+.
 Browser compatibility: Google Chrome 27+, Mozilla Firefox 20+, Internet Explorer 8+.
+
+Please contact me if you have succesfully tested it on a previous version.
 
 Features
 --------
@@ -32,6 +33,7 @@ Planned features
 ----------------
 
 * Event triggered at key moments of the execution
+* When the element to which the popover in attached to in animated, move the popover too
 * Option: Making the delay visible to the user, perhaps with a circular progress widget
 * Option: Pausing/Resuming the delay for the user
 * Option: Giving control to the user on the flow of the steps (previous, next)

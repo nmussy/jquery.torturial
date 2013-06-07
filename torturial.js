@@ -50,6 +50,12 @@
 				e.stopPropagation();
 				methods.destroy.apply(e.data.element);
 			}
+		},
+		timeout: function (e) {
+			delete e.views[e.currentView].steps[e.currentStep].delayid;
+			$(e).children('.torturial-popover').remove();
+			++e.currentStep;
+			transitions.openNextStep.apply(e);
 		}
 	},
 	transitions = {
@@ -199,13 +205,10 @@
 			}
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].delay !== 'undefined'
-				&& this.views[this.currentView].steps[this.currentStep].delay.length > 0) {
-				this.views[this.currentView].steps[this.currentStep].delayid = setTimeout(function () {
-					delete this.views[this.currentView].steps[this.currentStep].delayid;
-					$(this).children('.torturial-popover').remove();
-					++this.currentStep;
-					transitions.openNextStep.apply(this);
-				}, this.views[this.currentView].steps[this.currentStep].delay);
+				&& this.views[this.currentView].steps[this.currentStep].delay > 0) {
+				var element = this;
+				this.views[this.currentView].steps[this.currentStep].delayid = window.setTimeout(function(){handlers.timeout(element)},
+					this.views[this.currentView].steps[this.currentStep].delay);
 			} 
 			if (typeof this.views[this.currentView].steps[this.currentStep].changeOn !== 'undefined'
 				&& this.views[this.currentView].steps[this.currentStep].changeOn.length > 1) {
