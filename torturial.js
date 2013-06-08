@@ -115,16 +115,7 @@
 
 					if(typeof element.attachTo !== 'undefined' && element.attachTo.length == 1) {
 						var attach = element.attachTo;
-
-						attach.css('z-index', function(index, value) {
-							$(this).attr('data-z-index', value);
-							return 9999;
-						}).css('position', function(index, value) {
-							$(this).attr('data-position', value);
-							return 'relative';
-						});
-
-						popover.css({position: 'absolute'});
+						attach.addClass('torturial-attach');
 						
 						var top, left;
 						switch(element.attachPos) {
@@ -174,7 +165,6 @@
 						}
 					} else if (typeof element.position !== 'undefined' && element.position.length == 2) {
 						popover.css({
-							position: 'absolute',
 							left: element.position[0],
 							top: element.position[1]
 						});
@@ -186,13 +176,7 @@
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].foreground !== 'undefined'
 				&& this.views[this.currentView].steps[this.currentStep].foreground.length > 0) {
-				this.views[this.currentView].steps[this.currentStep].foreground.css('z-index', function(index, value) {
-					$(this).attr('data-z-index', value);
-					return 9999;
-				}).css('position', function(index, value) {
-					$(this).attr('data-position', value);
-					return 'relative';
-				});
+				this.views[this.currentView].steps[this.currentStep].foreground.addClass('torturial-foreground');
 			}
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].delay !== 'undefined'
@@ -246,29 +230,13 @@
 			if(typeof this.views[this.currentView].steps[this.currentStep].popovers !== 'undefined') {
 				this.views[this.currentView].steps[this.currentStep].popovers.forEach(function (element) {
 					if(typeof element.attachTo !== 'undefined') {
-						element.attachTo.css('z-index', function() {
-							var old = $(this).attr('data-z-index');
-							$(this).removeAttr('data-z-index');
-							return old;
-						}).css('position', function() {
-							var old = $(this).attr('data-position');
-							$(this).removeAttr('data-position');
-							return old;
-						});
+						element.attachTo.removeClass('torturial-attach');
 					}
 				});
 			}
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].foreground !== 'undefined') {
-				this.views[this.currentView].steps[this.currentStep].foreground.css('z-index', function() {
-					var old = $(this).attr('data-z-index');
-					$(this).removeAttr('data-z-index');
-					return old;
-				}).css('position', function() {
-					var old = $(this).attr('data-position');
-					$(this).removeAttr('data-position');
-					return old;
-				});
+				this.views[this.currentView].steps[this.currentStep].foreground.removeClass('torturial-foreground');
 			}
 
 			if(typeof this.views[this.currentView].steps[this.currentStep].changeOn !== 'undefined') {
@@ -336,26 +304,7 @@
 			else 
 				$(document).on('keydown', {element: this}, handlers.singleViewKeydown);
 
-			$(this)
-				.css('z-index', function(index, value) {
-					$(this).attr('data-z-index', value);
-					return 9999;
-				}).css('position', function(index, value) {
-					$(this).attr('data-position', value);
-					return 'absolute';
-				}).css('top', function(index, value) {
-					$(this).attr('data-top', value);
-					return 0;
-				}).css('left', function(index, value) {
-					$(this).attr('data-left', value);
-					return 0;
-				}).css('width', function(index, value) {
-					$(this).attr('data-width', value);
-					return '100%';
-				}).css('height', function(index, value) {
-					$(this).attr('data-height', value);
-					return '100%';
-				}).removeAttr('hidden');
+			$(this).removeAttr('hidden');
 
 			transitions.openCurrentView.apply(this);
 			return $(this);
@@ -369,32 +318,7 @@
 			else 
 				$(document).off('keydown', handlers.singleViewKeydown);
 
-			$(this).attr('hidden', 'hidden')
-				.css('z-index', function(index, value) {
-					var old = $(this).attr('data-z-index');
-					$(this).removeAttr('data-z-index');
-					return old;
-				}).css('position', function(index, value) {
-					var old = $(this).attr('data-position');
-					$(this).removeAttr('data-position');
-					return old;
-				}).css('top', function(index, value) {
-					var old = $(this).attr('data-top');
-					$(this).removeAttr('data-top');
-					return old;
-				}).css('left', function(index, value) {
-					var old = $(this).attr('data-left');
-					$(this).removeAttr('data-left');
-					return old;
-				}).css('width', function(index, value) {
-					var old = $(this).attr('data-width');
-					$(this).removeAttr('data-width');
-					return old;
-				}).css('height', function(index, value) {
-					var old = $(this).attr('data-height');
-					$(this).removeAttr('data-height');
-					return old;
-				});
+			$(this).attr('hidden', 'hidden');
 
 			transitions.cleanStep.apply(this);
 			return $(this);

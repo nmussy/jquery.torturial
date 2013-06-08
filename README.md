@@ -3,7 +3,7 @@ jquery.torturial
 
 An advanced tutorial plugin for jQuery.
 
-Version 0.0.6
+Version 0.0.7
 -------------
 
 Check out the [changelog](CHANGELOG.md).

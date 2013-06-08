@@ -3,6 +3,11 @@ Changelog
 
 ---
 
+### 0.0.7    June 8, 2013
+
+* Cleaned up CSS, no longer directly managed by the Javascript, except for the popover positionning
+* Fixed stack ordering for attached and foregrounded elements
+
 ### 0.0.6    June 8, 2013
 
 * Fixed issues created by the last patch
