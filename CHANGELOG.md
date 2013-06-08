@@ -3,6 +3,10 @@ Changelog
 
 ---
 
+### 0.0.6    June 8, 2013
+
+* Fixed issues created by the last patch
+
 ### 0.0.5    June 8, 2013
 
 * End of tutorial clean up

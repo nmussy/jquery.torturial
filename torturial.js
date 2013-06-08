@@ -53,8 +53,6 @@
 		},
 		timeout: function (e) {
 			delete e.views[e.currentView].steps[e.currentStep].delayid;
-			$(e).children('.torturial-popover').remove();
-			++e.currentStep;
 			transitions.openNextStep.apply(e);
 		}
 	},
@@ -89,7 +87,7 @@
 		openNextView: function () {
 			transitions.cleanStep.apply(this);
 			this.currentStep = 0;
-			this.currentView++;
+			++this.currentView;
 			transitions.openCurrentView.apply(this);
 		},
 		openCurrentStep: function () {
@@ -100,7 +98,7 @@
 				}
 				this.currentStep = 0;
 				++this.currentView;
-				transitions.openNextView.apply(this);
+				transitions.openCurrentView.apply(this);
 				return;
 			}
 			if(typeof this.views[this.currentView].steps[this.currentStep].popovers !== 'undefined') {
@@ -240,7 +238,7 @@
 		},
 		openNextStep: function () {
 			transitions.cleanStep.apply(this);
-			this.currentStep++;
+			++this.currentStep;
 			transitions.openCurrentStep.apply(this);
 		},
 		cleanStep: function() {
