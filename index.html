@@ -33,10 +33,36 @@
       <section>
         <h1>Examples</h1>
         <h2>Here are a few torturials, to give the laziest of you a glimpse at how the plugin works.</h2>
+
         <p style="margin-top: 15px">First up, a quick view at what a view looks like when it's on its own:</p>
-        <script id="Gist-torturial-changeOn" class"gist" src="https://gist.github.com/nmussy/5731854.js"></script>
+        <script src="https://gist.github.com/nmussy/5731854.js"></script>
         <button id="changeOn-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
         <p style="margin-top: 15px">It's most likely the ugliest jQuery plugin initialization you've ever seen, but it is designed to build bigger tutorials.</p>
+
+        <p style="margin-top: 30px">Here's a more complex example. It doesn't get any prettier, though.</p>
+        <script src="https://gist.github.com/nmussy/5735806.js"></script>
+        <button id="delay-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
+
+        <p style="margin-top: 30px">Let's go back to the change handlers. Your function will be wrapped around an actual handler, that destroys itself when it needs to.<br />
+          It's actually pretty neat, if I do say so myself. That way, you can go crazy in your function without worrying about when to remove the handler.</p>
+        <p>The problem is, if you return before the end of your handler, the plugin's function won't know about it, and will jump to the next step.<br />
+          That's why you need to return a false boolean if you want to stop the event's propagation.
+        </p>
+        <script src="https://gist.github.com/nmussy/5735958.js"></script>
+        <button id="advanced-changeOn-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
+
+        <h1 style="margin-top: 40px">The why of the project</h1>
+        <p>I realize that it's a very specific thing, a website tutoring jQuery plugin. That's why I couldn't find a good one.
+          So I took off my whining cap and put on my coding one. It's my first jQuery plugin, and GitHub project.
+          I don't think a lot of people will actually use it, but it wasn't really the goal.<br /><br />
+
+          It's one of these very long-shot Google searches result that ends up saving you hours of work.<br />
+          It's that plugin that your jQuery lover friend bet he could find on the Registry.<br />
+          Another cute comparison to establish a rythm.<br /><br />
+
+          I do hope a few of you will end up using it, and I'd really appreciate any kind of feedback. You'll be able to find some contact info on my GitHub Profile.<br />
+          A "ur gay" always goes a long way.
+        </p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nmussy">nmussy</a></p>
@@ -46,6 +72,8 @@
       </footer>
     </div>
     <div id="torturial-example-changeOn"></div>
+    <div id="torturial-example-delay"></div>
+    <div id="torturial-example-advanced-changeOn"></div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://rawgithub.com/nmussy/jquery.torturial/master/torturial.js"></script>
     <script src="javascripts/scale.fix.js"></script>
@@ -66,6 +94,12 @@
         });
         $('#changeOn-button').click(function() {
           $.getScript('https://rawgithub.com/nmussy/5731854/raw/ee3018e6268fe30882dae4519096fc78677939fb/jquery.torturial-example-changeOn.js');
+        });
+        $('#delay-button').click(function() {
+          $.getScript('https://rawgithub.com/nmussy/5735806/raw/dd4627243204e0d59b380a158486e3bdd5b7b648/jquery.torturial-example-delay.js');
+        });
+        $('#advanced-changeOn-button').click(function() {
+          $.getScript('https://rawgithub.com/nmussy/5735958/raw/f40464008e82c01be0ee187f607ad510a1f25662/jquery.torturial-example-advanced-changeOn.js');
         });
       });
     </script>
