@@ -43,10 +43,17 @@
         <script src="https://gist.github.com/nmussy/5735806.js"></script>
         <button id="delay-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
 
+        <p style="margin-top: 30px">You might want to bring back elements to the front of the page.
+          It's very easy to do with a torturial, you just use a jQuery selector. <br />
+          Be careful though: if the elements selected aren't the same that at the time of the initialization of the torturial, you'll have to manually bring them to the back using a changeOn event. You can check out <code>methods.cleanStep()</code> to see how to do so.
+        </p>
+        <script src="https://gist.github.com/nmussy/5736357.js"></script>
+        <button id="foreground-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
+
         <p style="margin-top: 30px">Let's go back to the change handlers. Your function will be wrapped around an actual handler, that destroys itself when it needs to.<br />
           It's actually pretty neat, if I do say so myself. That way, you can go crazy in your function without worrying about when to remove the handler.</p>
         <p>The problem is, if you return before the end of your handler, the plugin's function won't know about it, and will jump to the next step.<br />
-          That's why you need to return a false boolean if you want to stop the event's propagation.
+          That's why you need to return a <code>false</code> boolean if you want to stop the event's propagation.
         </p>
         <script src="https://gist.github.com/nmussy/5735958.js"></script>
         <button id="advanced-changeOn-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
@@ -73,6 +80,7 @@
     </div>
     <div id="torturial-example-changeOn"></div>
     <div id="torturial-example-delay"></div>
+    <div id="torturial-example-foreground"></div>
     <div id="torturial-example-advanced-changeOn"></div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://rawgithub.com/nmussy/jquery.torturial/master/torturial.js"></script>
@@ -97,6 +105,9 @@
         });
         $('#delay-button').click(function() {
           $.getScript('https://rawgithub.com/nmussy/5735806/raw/dd4627243204e0d59b380a158486e3bdd5b7b648/jquery.torturial-example-delay.js');
+        });
+        $('#foreground-button').click(function() {
+          $.getScript('https://rawgithub.com/nmussy/5736357/raw/5705d602f2dc06da10bb136fd2513840ad6c256f/jquery.torturial-example-foreground.js');
         });
         $('#advanced-changeOn-button').click(function() {
           $.getScript('https://rawgithub.com/nmussy/5735958/raw/f40464008e82c01be0ee187f607ad510a1f25662/jquery.torturial-example-advanced-changeOn.js');
