@@ -35,7 +35,7 @@
         <h2>Here are a few torturials, to give the laziest of you a glimpse at how the plugin works.</h2>
         <p style="margin-top: 15px">First up, a quick view at what a view looks like when it's on its own:</p>
         <script id="Gist-torturial-changeOn" class"gist" src="https://gist.github.com/nmussy/5731854.js"></script>
-        <button id="changeOn" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
+        <button id="changeOn-button" style="margin-left:216.5px" class="btn btn-small btn-inverse init-torturial">Try it out</button>
         <p style="margin-top: 15px">It's most likely the ugliest jQuery plugin initialization you've ever seen, but it is designed to build bigger tutorials.</p>
       </section>
       <footer>
@@ -61,11 +61,11 @@
     </script>
     <script type="text/javascript">
       $(function() {
-        jQuery.get('https://api.github.com/repos/nmussy/jquery.torturial/tags', function(data) { 
+        $.get('https://api.github.com/repos/nmussy/jquery.torturial/tags', function(data) { 
           $('#version').html('Version ' + data[0].name);
         });
-        $('#changeOn').click(function() {
-          jQuery.getScript('https://rawgithub.com/nmussy/5731854/raw/d7ca1bb395dbd7c3879d8cd2513545584dd7dd83/jquery.torturial-example-changeOn.js');
+        $('#changeOn-button').click(function() {
+          $.getScript('https://rawgithub.com/nmussy/5731854/raw/ee3018e6268fe30882dae4519096fc78677939fb/jquery.torturial-example-changeOn.js');
         });
       });
     </script>
