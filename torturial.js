@@ -320,7 +320,10 @@
 
 			$(this).attr('hidden', 'hidden');
 
-			transitions.cleanStep.apply(this);
+			if(this.currentView >= this.views.length
+				&& this.currentStep >= this.views[this.currentView].steps.length)
+				transitions.cleanStep.apply(this);
+			
 			return $(this);
 		},
 		destroy: function() {

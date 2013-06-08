@@ -3,6 +3,10 @@ Changelog
 
 ---
 
+### 0.0.8    June 8, 2013
+
+* Fixed page getting cleaned twice when it reached its natural destruction
+
 ### 0.0.7    June 8, 2013
 
 * Cleaned up CSS, no longer directly managed by the Javascript, except for the popover positionning
