@@ -18,6 +18,7 @@
     <div class="wrapper">
       <header>
         <h1>jquery.torturial</h1>
+        <h2 id="version"></h2>
         <p>An advanced jQuery tutorial plugin. Teach your users to use your web page.</p>
 
         <p class="view"><a href="https://github.com/nmussy/jquery.torturial">View the Project on GitHub <small>nmussy/jquery.torturial</small></a></p>
@@ -58,10 +59,12 @@
         pageTracker._trackPageview();
       } catch(err) {}
     </script>
-    <script>
+    <script type="text/javascript">
       $(function() {
+        jQuery.get('https://api.github.com/repos/nmussy/jquery.torturial/tags', function(data) { 
+          $('#version').html('Version ' + data[0].name);
+        });
         $('#changeOn').click(function() {
-
           jQuery.getScript('https://rawgithub.com/nmussy/5731854/raw/d7ca1bb395dbd7c3879d8cd2513545584dd7dd83/jquery.torturial-example-changeOn.js');
         });
       });
