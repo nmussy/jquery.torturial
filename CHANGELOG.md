@@ -3,6 +3,10 @@ Changelog
 
 ---
 
+### 0.0.5    June 8, 2013
+
+* End of tutorial clean up
+
 ### 0.0.4    June 7, 2013
 
 * `delay` fix

@@ -81,35 +81,28 @@
 			transitions.openCurrentStep.apply(this);
 		},
 		openPreviousView: function () {
-			if(this.currentView <= 0)
-				return false;
-
 			transitions.cleanStep.apply(this);
 			this.currentStep = 0;
 			this.currentView--;
 			transitions.openCurrentView.apply(this);
 		},
 		openNextView: function () {
-			if(this.currentView >= this.views.length - 1)
-				return false;
-
 			transitions.cleanStep.apply(this);
 			this.currentStep = 0;
 			this.currentView++;
 			transitions.openCurrentView.apply(this);
 		},
 		openCurrentStep: function () {
-			if(this.currentStep == this.views[this.currentView].steps.length) {
-				if(this.currentView == this.views.length) {
-					// END OF SLIDESHOW
-					return false;
+			if(this.currentStep >= this.views[this.currentView].steps.length) {
+				if(this.currentView >= this.views.length - 1) {
+					methods.destroy.apply(this);
+					return;
 				}
 				this.currentStep = 0;
 				++this.currentView;
 				transitions.openNextView.apply(this);
-				return false;
+				return;
 			}
-
 			if(typeof this.views[this.currentView].steps[this.currentStep].popovers !== 'undefined') {
 				this.views[this.currentView].steps[this.currentStep].popovers.forEach(function (element) {
 					var popover = $('<div class="torturial-popover"></div>');
@@ -246,11 +239,6 @@
 			}
 		},
 		openNextStep: function () {
-			if(this.currentStep >= this.views[this.currentView].steps.length - 1) {
-				this.currentStep = 0;
-				transitions.openNextView.apply(this);
-				return;
-			}
 			transitions.cleanStep.apply(this);
 			this.currentStep++;
 			transitions.openCurrentStep.apply(this);
