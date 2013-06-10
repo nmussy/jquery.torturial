@@ -3,7 +3,7 @@ jquery.torturial
 
 An advanced tutorial plugin for jQuery.
 
-Version 0.0.8
+Version 0.1.0
 -------------
 
 Check out the [changelog](CHANGELOG.md).
@@ -37,7 +37,6 @@ Features
 Planned features
 ----------------
 
-* Event triggered at key moments of the execution
 * When the element to which the popover in attached to in animated, move the popover too
 * Option: Making the delay visible to the user, perhaps with a circular progress widget
 * Option: Pausing/Resuming the delay for the user
@@ -148,6 +147,17 @@ Text-containing bubbles that give out indication to the user.
 * `startingView` – The index of the view that will be displayed at the creation of the torturial. `Default: 0`
 * `startingStep` – The index of the step within the `startingView` to be first displayed at the creation of the torturial. `Default: 0`
 
+### Events
+
+You can set listeners to the following events:
+
+* `torturial:viewopened` – Triggered when a new view has been opened, before its first step is loaded
+* `torturial:stepopened` – Triggered when a new step has been fully loaded, even if it is the first of a view
+* `torturial:timedout` – Triggered when the end of a delay has been reached, and before the current step is closed
+* `torturial:initialized` – Triggered at the end of the initialization
+* `torturial:show` – Triggered when the torturial is shown. Note it will also trigger a `torturial:viewopened` event afterwards
+* `torturial:hide` – Triggered when the torturial is hidden
+* `torturial:destroy` – Triggered when the torturial is being destroyed, by pressing `ESC`, clicking the cross. Note it will also trigger a `torturial:hide`
 
 ### Keyboard shortcuts
 

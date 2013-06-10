@@ -3,6 +3,11 @@ Changelog
 
 ---
 
+### 0.1.0    June 10, 2013
+
+* Custom event triggers are now fired, see the README
+* Fixed elements not being brought back to the background on `hide` and `destroy`
+
 ### 0.0.8    June 8, 2013
 
 * Fixed page getting cleaned twice when it reached its natural destruction

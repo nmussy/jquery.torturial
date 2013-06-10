@@ -52,6 +52,7 @@
 			}
 		},
 		timeout: function (e) {
+			$(e).trigger('torturial:timedout');
 			delete e.views[e.currentView].steps[e.currentStep].delayid;
 			transitions.openNextStep.apply(e);
 		}
@@ -76,6 +77,7 @@
 					$('#torturial-right-arrow').on('click', {element: this}, handlers.rightArrowClick);
 				}
 			}
+			$(this).trigger('torturial:viewopened');
 			transitions.openCurrentStep.apply(this);
 		},
 		openPreviousView: function () {
@@ -219,6 +221,7 @@
 			else { // defaults
 
 			}
+			$(this).trigger('torturial:stepopened');
 		},
 		openNextStep: function () {
 			transitions.cleanStep.apply(this);
@@ -296,6 +299,7 @@
 			return this;
 		},
 		show: function() {
+			$(this).trigger('torturial:show');
 			if(typeof $(this).attr('hidden') === 'undefined')
 				return;
 
@@ -310,6 +314,7 @@
 			return $(this);
 		},
 		hide: function() {
+			$(this).trigger('torturial:hide');
 			if(typeof $(this).attr('hidden') !== 'undefined')
 				return;
 
@@ -323,10 +328,23 @@
 			if(this.currentView >= this.views.length
 				&& this.currentStep >= this.views[this.currentView].steps.length)
 				transitions.cleanStep.apply(this);
+
+			if(typeof this.views[this.currentView].steps[this.currentStep].popovers !== 'undefined') {
+				this.views[this.currentView].steps[this.currentStep].popovers.forEach(function (element) {
+					if(typeof element.attachTo !== 'undefined') {
+						element.attachTo.removeClass('torturial-attach');
+					}
+				});
+			}
+
+			if(typeof this.views[this.currentView].steps[this.currentStep].foreground !== 'undefined') {
+				this.views[this.currentView].steps[this.currentStep].foreground.removeClass('torturial-foreground');
+			}
 			
 			return $(this);
 		},
 		destroy: function() {
+			$(this).trigger('torturial:destroy');
 			methods.hide.apply(this);
 			if(this.views.length > 1)
 				$(document).off('keydown', handlers.multipleViewsKeydown);

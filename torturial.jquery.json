@@ -1,6 +1,6 @@
 {
 	"name": "torturial",
-	"version": "0.0.8",
+	"version": "0.1.0",
 	"title": "Torturial",
 	"author": {
 		"name": "Jimmy Gaussen",
@@ -16,6 +16,7 @@
 	"dependencies": {
 		"jquery": ">=1.9"
 	},
+	"homepage": "http://nmussy.github.io/jquery.torturial/",
 	"description": "An advanced jQuery tutorial plugin. Teach your users to use your web page.",
 	"keywords": [
 		"tutorial",
